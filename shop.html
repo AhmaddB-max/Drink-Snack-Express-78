@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Drink Express | Browse Premium Beverages</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .shop-header {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            padding: 4rem 0 3rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .shop-header h1 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .shop-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 3rem;
+            padding: 3rem 0;
+        }
+        
+        .filters-sidebar {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .filter-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .filter-section h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+        }
+        
+        .filter-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+        
+        .filter-option:hover {
+            color: var(--accent-gold);
+        }
+        
+        .filter-option input[type="checkbox"] {
+            margin-right: 0.75rem;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        
+        .price-inputs {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .price-input {
+            flex: 1;
+        }
+        
+        .price-input input {
+            width: 100%;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.5rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        
+        .clear-filters {
+            width: 100%;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            font-weight: 600;
+        }
+        
+        .clear-filters:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+        
+        .shop-content {
+            min-height: 60vh;
+        }
+        
+        .shop-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+        
+        .search-box {
+            flex: 1;
+            max-width: 400px;
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.875rem 1rem 0.875rem 3rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: var(--transition-fast);
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+        }
+        
+        .sort-dropdown {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.875rem 1.25rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition-fast);
+        }
+        
+        .sort-dropdown:hover {
+            border-color: var(--accent-gold);
+        }
+        
+        .results-count {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        .results-count strong {
+            color: var(--accent-gold);
+        }
+        
+        @media (max-width: 1024px) {
+            .shop-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .filters-sidebar {
+                position: static;
+            }
+            
+            .shop-controls {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+            
+            .search-box {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">🥃</span>
+                    <span class="logo-text">Drink Express</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="shop.html" class="active">Shop</a>
+                    <a href="about.html">About</a>
+                    <a href="delivery.html">Delivery</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="nav-actions">
+                    <button class="icon-btn">🔍</button>
+                    <button class="icon-btn cart-btn">
+                        🛒
+                        <span class="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Shop Header -->
+    <section class="shop-header">
+        <div class="container">
+            <h1>Premium Beverages</h1>
+            <p style="color: var(--text-secondary); font-size: 1.2rem;">Explore our curated collection of spirits, wines, beers, and more</p>
+        </div>
+    </section>
+
+    <!-- Shop Content -->
+    <div class="container">
+        <div class="shop-container">
+            <!-- Filters Sidebar -->
+            <aside class="filters-sidebar">
+                <div class="filter-section">
+                    <h3>Categories</h3>
+                    <label class="filter-option">
+                        <input type="checkbox" value="spirits">
+                        <span>Spirits (156)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="wine">
+                        <span>Wine (203)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="beer">
+                        <span>Beer (142)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="champagne">
+                        <span>Champagne (45)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="mixers">
+                        <span>Mixers (78)</span>
+                    </label>
+                </div>
+
+                <div class="filter-section">
+                    <h3>Price Range</h3>
+                    <div class="price-inputs">
+                        <div class="price-input">
+                            <input type="number" placeholder="Min ($)" value="0">
+                        </div>
+                        <div class="price-input">
+                            <input type="number" placeholder="Max ($)" value="500">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3>Brand</h3>
+                    <label class="filter-option">
+                        <input type="checkbox" value="premium">
+                        <span>Premium Brands</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="craft">
+                        <span>Craft & Artisan</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="imported">
+                        <span>Imported</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="local">
+                        <span>Local Selection</span>
+                    </label>
+                </div>
+
+                <div class="filter-section">
+                    <h3>Special Offers</h3>
+                    <label class="filter-option">
+                        <input type="checkbox" value="sale">
+                        <span>On Sale</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="new">
+                        <span>New Arrivals</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="bestseller">
+                        <span>Bestsellers</span>
+                    </label>
+                </div>
+
+                <button class="clear-filters">Clear All Filters</button>
+            </aside>
+
+            <!-- Products Area -->
+            <div class="shop-content">
+                <div class="shop-controls">
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" placeholder="Search products...">
+                    </div>
+                    <select class="sort-dropdown">
+                        <option>Sort by: Featured</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                        <option>Newest First</option>
+                        <option>Best Selling</option>
+                        <option>Highest Rated</option>
+                    </select>
+                </div>
+
+                <div class="results-count">
+                    Showing <strong>624 products</strong>
+                </div>
+
+                <div class="products-grid" style="margin-top: 2rem;">
+                    <!-- Product 1 -->
+                    <div class="product-card">
+                        <div class="product-badge">Bestseller</div>
+                        <div class="product-image">
+                            <div class="product-img-placeholder">🥃</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Premium Whiskey</h3>
+                            <p class="product-category">Single Malt Scotch</p>
+                            <div class="product-rating">⭐⭐⭐⭐⭐ <span>(124)</span></div>
+                            <div class="product-footer">
+                                <span class="product-price">$89.99</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="product-card">
+                        <div class="product-badge sale">Sale</div>
+                        <div class="product-image">
+                            <div class="product-img-placeholder">🍷</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">French Bordeaux</h3>
+                            <p class="product-category">Red Wine, 2019</p>
+                            <div class="product-rating">⭐⭐⭐⭐⭐ <span>(89)</span></div>
+                            <div class="product-footer">
+                                <span class="product-price">$45.99 <del>$59.99</del></span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="product-card">
+                        <div class="product-badge new">New</div>
+                        <div class="product-image">
+                            <div class="product-img-placeholder">🍺</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Craft IPA Selection</h3>
+                            <p class="product-category">Mixed Pack, 12 Bottles</p>
+                            <div class="product-rating">⭐⭐⭐⭐⭐ <span>(56)</span></div>
+                            <div class="product-footer">
+                                <span class="product-price">$34.99</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="product-img-placeholder">🥂</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Premium Champagne</h3>
+                            <p class="product-category">French, Brut</p>
+                            <div class="product-rating">⭐⭐⭐⭐⭐ <span>(93)</span></div>
+                            <div class="product-footer">
+                                <span class="product-price">$125.00</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 5 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="product-img-placeholder">🍾</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Luxury Vodka</h3>
+                            <p class="product-category">Premium Russian Vodka</p>
+                            <div class="product-rating">⭐⭐⭐⭐⭐ <span>(167)</span></div>
+                            <div class="product-footer">
+                                <span class="product-price">$72.50</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 6 -->
+                    <div class="product-card">
+                        <div class="product-badge sale">Sale</div>
+                        <div class="product-image">
+                            <div class="product-img-placeholder">🥃</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Bourbon Selection</h3>
+                            <p class="product-category">Kentucky Straight Bourbon</p>
+                            <div class="product-rating">⭐⭐⭐⭐⭐ <span>(203)</span></div>
+                            <div class="product-footer">
+                                <span class="product-price">$54.99 <del>$69.99</del></span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 7 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="product-img-placeholder">🍷</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Italian Chianti</h3>
+                            <p class="product-category">Red Wine, Tuscany</p>
+                            <div class="product-rating">⭐⭐⭐⭐⭐ <span>(78)</span></div>
+                            <div class="product-footer">
+                                <span class="product-price">$38.00</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 8 -->
+                    <div class="product-card">
+                        <div class="product-badge">Bestseller</div>
+                        <div class="product-image">
+                            <div class="product-img-placeholder">🍺</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">German Lager Pack</h3>
+                            <p class="product-category">Premium Lager, 24 Pack</p>
+                            <div class="product-rating">⭐⭐⭐⭐⭐ <span>(445)</span></div>
+                            <div class="product-footer">
+                                <span class="product-price">$42.99</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 9 -->
+                    <div class="product-card">
+                        <div class="product-badge new">New</div>
+                        <div class="product-image">
+                            <div class="product-img-placeholder">🍹</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Premium Rum</h3>
+                            <p class="product-category">Caribbean Aged Rum</p>
+                            <div class="product-rating">⭐⭐⭐⭐⭐ <span>(112)</span></div>
+                            <div class="product-footer">
+                                <span class="product-price">$65.00</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div style="display: flex; justify-content: center; gap: 0.5rem; margin-top: 3rem;">
+                    <button class="btn-secondary" style="padding: 0.75rem 1.25rem;">Previous</button>
+                    <button class="btn-primary" style="padding: 0.75rem 1.25rem;">1</button>
+                    <button class="btn-secondary" style="padding: 0.75rem 1.25rem;">2</button>
+                    <button class="btn-secondary" style="padding: 0.75rem 1.25rem;">3</button>
+                    <button class="btn-secondary" style="padding: 0.75rem 1.25rem;">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Drink Express</h3>
+                    <p>Premium alcohol delivery service bringing quality beverages to your door with speed and reliability.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📸</a>
+                        <a href="#" class="social-link">🐦</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="shop.html">Shop All</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="delivery.html">Delivery Info</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="shop.html?category=spirits">Spirits</a></li>
+                        <li><a href="shop.html?category=wine">Wine</a></li>
+                        <li><a href="shop.html?category=beer">Beer</a></li>
+                        <li><a href="shop.html?category=mixers">Mixers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Drink Express. All rights reserved.</p>
+                <p class="footer-disclaimer">Please drink responsibly. Must be 21+ to order. We verify age at delivery.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

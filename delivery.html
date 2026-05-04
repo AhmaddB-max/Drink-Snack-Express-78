@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Information - Drink Express</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .delivery-hero {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            padding: 6rem 0 4rem;
+            border-bottom: 1px solid var(--accent-gold);
+        }
+        
+        .delivery-hero h1 {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .delivery-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .delivery-card {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 3rem;
+            transition: var(--transition-normal);
+        }
+        
+        .delivery-card.featured {
+            border-color: var(--accent-gold);
+            position: relative;
+        }
+        
+        .delivery-card.featured::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-gold);
+            color: var(--bg-primary);
+            padding: 0.4rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .delivery-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-gold);
+        }
+        
+        .delivery-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            filter: drop-shadow(0 0 10px var(--accent-gold));
+        }
+        
+        .delivery-card h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+        }
+        
+        .delivery-card .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .delivery-card .timing {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .delivery-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .delivery-features li {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .delivery-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .zone-map {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 3rem;
+            text-align: center;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .zone-map-icon {
+            font-size: 8rem;
+            margin-bottom: 2rem;
+            opacity: 0.5;
+        }
+        
+        .faq-section {
+            background: var(--bg-secondary);
+        }
+        
+        .faq-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            transition: var(--transition-normal);
+        }
+        
+        .faq-item:hover {
+            border-color: var(--accent-gold);
+        }
+        
+        .faq-question {
+            padding: 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+        }
+        
+        .faq-answer {
+            padding: 0 2rem 2rem 2rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .faq-icon {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+        }
+        
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .requirement-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2.5rem;
+            text-align: center;
+        }
+        
+        .requirement-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        
+        .requirement-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+        }
+        
+        .requirement-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        @media (max-width: 768px) {
+            .delivery-hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">🥃</span>
+                    <span class="logo-text">Drink Express</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="shop.html">Shop</a>
+                    <a href="about.html">About</a>
+                    <a href="delivery.html" class="active">Delivery</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="nav-actions">
+                    <button class="icon-btn">🔍</button>
+                    <button class="icon-btn cart-btn">
+                        🛒
+                        <span class="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Delivery Hero -->
+    <section class="delivery-hero">
+        <div class="container" style="text-align: center;">
+            <h1>Delivery Information</h1>
+            <p style="font-size: 1.4rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto;">Fast, reliable delivery right to your door. Choose the delivery option that works best for you.</p>
+        </div>
+    </section>
+
+    <!-- Delivery Options -->
+    <section style="padding: var(--spacing-xl) 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Delivery Options</h2>
+                <p>Flexible delivery to fit your schedule</p>
+            </div>
+            <div class="delivery-options">
+                <div class="delivery-card featured">
+                    <span class="delivery-icon">⚡</span>
+                    <h3>Express Delivery</h3>
+                    <div class="price">$9.99</div>
+                    <div class="timing">Delivery in under 60 minutes</div>
+                    <ul class="delivery-features">
+                        <li>Lightning-fast delivery</li>
+                        <li>Priority handling</li>
+                        <li>Real-time GPS tracking</li>
+                        <li>Perfect for last-minute needs</li>
+                        <li>Available 7 days a week</li>
+                    </ul>
+                    <a href="shop.html" class="btn-primary" style="width: 100%;">Order Now</a>
+                </div>
+
+                <div class="delivery-card">
+                    <span class="delivery-icon">🚚</span>
+                    <h3>Standard Delivery</h3>
+                    <div class="price">$4.99</div>
+                    <div class="timing">Same-day delivery (2-4 hours)</div>
+                    <ul class="delivery-features">
+                        <li>Affordable shipping</li>
+                        <li>Same-day delivery</li>
+                        <li>Order tracking</li>
+                        <li>Flexible time windows</li>
+                        <li>Reliable service</li>
+                    </ul>
+                    <a href="shop.html" class="btn-outline" style="width: 100%;">Order Now</a>
+                </div>
+
+                <div class="delivery-card">
+                    <span class="delivery-icon">🎁</span>
+                    <h3>Free Delivery</h3>
+                    <div class="price">FREE</div>
+                    <div class="timing">Orders $150 and above</div>
+                    <ul class="delivery-features">
+                        <li>No delivery fee</li>
+                        <li>Same-day or next-day</li>
+                        <li>Full tracking included</li>
+                        <li>Perfect for stocking up</li>
+                        <li>Premium packaging</li>
+                    </ul>
+                    <a href="shop.html" class="btn-outline" style="width: 100%;">Start Shopping</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delivery Area -->
+    <section style="padding: var(--spacing-xl) 0; background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Service Coverage Area</h2>
+                <p>We deliver to these areas and beyond</p>
+            </div>
+            <div class="zone-map">
+                <div class="zone-map-icon">🗺️</div>
+                <h3 style="font-family: var(--font-display); font-size: 2rem; color: var(--accent-gold); margin-bottom: 1rem;">Currently Serving Your Area</h3>
+                <p style="color: var(--text-secondary); font-size: 1.2rem; max-width: 600px;">We're proud to serve customers across the metropolitan area. Enter your zip code at checkout to confirm delivery availability and get an accurate delivery time estimate.</p>
+                <div style="margin-top: 2rem;">
+                    <a href="contact.html" class="btn-primary">Check Your Area</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Requirements -->
+    <section style="padding: var(--spacing-xl) 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Delivery Requirements</h2>
+                <p>What you need to know before ordering</p>
+            </div>
+            <div class="requirements-grid">
+                <div class="requirement-card">
+                    <span class="requirement-icon">🎂</span>
+                    <h3>Age Verification</h3>
+                    <p>Valid government-issued ID required at delivery. Must be 21 years or older. We do not deliver to anyone who appears intoxicated.</p>
+                </div>
+                <div class="requirement-card">
+                    <span class="requirement-icon">📍</span>
+                    <h3>Delivery Address</h3>
+                    <p>We deliver to residential addresses only. Clear instructions and working buzzer/intercom help ensure smooth delivery.</p>
+                </div>
+                <div class="requirement-card">
+                    <span class="requirement-icon">💳</span>
+                    <h3>Payment</h3>
+                    <p>We accept all major credit cards, debit cards, and digital payment methods. Payment is processed securely at checkout.</p>
+                </div>
+                <div class="requirement-card">
+                    <span class="requirement-icon">📦</span>
+                    <h3>Signature Required</h3>
+                    <p>Adult signature required at delivery. If you're unavailable, we'll leave a notice and attempt redelivery or arrange pickup.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about our delivery service</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What are your delivery hours?
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        We offer delivery 7 days a week from 10:00 AM to 11:00 PM. Express delivery is available during all operating hours, while standard delivery cutoff times may vary by location.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you deliver to apartments and condos?
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes! We deliver to apartments, condos, and multi-unit buildings. Please provide clear delivery instructions including building access codes, unit numbers, and any special directions to help our drivers find you quickly.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What if I'm not home for delivery?
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Since adult signature is required for alcohol delivery, someone 21+ must be present to receive the order. If no one is available, our driver will leave a notice and you can reschedule delivery or arrange for pickup at our location.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can I track my order?
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Absolutely! Once your order is out for delivery, you'll receive a tracking link via SMS and email. You can follow your driver's location in real-time on a map and get updates on estimated arrival time.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What's your cancellation policy?
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Orders can be cancelled free of charge up to 15 minutes after placement. Once your order has been assigned to a driver, cancellation fees may apply. Contact our customer service team immediately if you need to cancel.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you offer contactless delivery?
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes! While we still need to verify age and require a signature, we offer a contactless option where the driver verifies your ID from a safe distance and you can sign electronically on their device.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Place Your Order?</h2>
+                <p>Fast delivery, premium selection, and exceptional service await</p>
+                <a href="shop.html" class="btn-primary btn-large">Start Shopping</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Drink Express</h3>
+                    <p>Premium alcohol delivery service bringing quality beverages to your door with speed and reliability.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📸</a>
+                        <a href="#" class="social-link">🐦</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="shop.html">Shop All</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="delivery.html">Delivery Info</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="shop.html?category=spirits">Spirits</a></li>
+                        <li><a href="shop.html?category=wine">Wine</a></li>
+                        <li><a href="shop.html?category=beer">Beer</a></li>
+                        <li><a href="shop.html?category=mixers">Mixers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Drink Express. All rights reserved.</p>
+                <p class="footer-disclaimer">Please drink responsibly. Must be 21+ to order. We verify age at delivery.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

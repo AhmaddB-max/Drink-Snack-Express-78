@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Drink Express</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .contact-hero {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            padding: 6rem 0 4rem;
+            border-bottom: 1px solid var(--accent-gold);
+        }
+        
+        .contact-hero h1 {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            padding: var(--spacing-xl) 0;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+        
+        .info-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2.5rem;
+            transition: var(--transition-normal);
+        }
+        
+        .info-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateX(8px);
+        }
+        
+        .info-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            filter: drop-shadow(0 0 8px var(--accent-gold));
+        }
+        
+        .info-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+        }
+        
+        .info-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .info-card a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition-fast);
+        }
+        
+        .info-card a:hover {
+            color: var(--accent-gold-light);
+        }
+        
+        .contact-form-wrapper {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 3rem;
+        }
+        
+        .contact-form-wrapper h2 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--accent-gold);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: var(--transition-fast);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            background: var(--accent-gold);
+            color: var(--bg-primary);
+            border: none;
+            padding: 1.25rem;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-normal);
+            margin-top: 1rem;
+        }
+        
+        .submit-btn:hover {
+            background: var(--accent-gold-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .hours-section {
+            background: var(--bg-secondary);
+        }
+        
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .hours-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2.5rem;
+            text-align: center;
+        }
+        
+        .hours-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-gold);
+        }
+        
+        .hours-list {
+            list-style: none;
+        }
+        
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color-light);
+            color: var(--text-secondary);
+        }
+        
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .hours-list li strong {
+            color: var(--text-primary);
+        }
+        
+        .support-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .support-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: var(--transition-normal);
+        }
+        
+        .support-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .support-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        
+        .support-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+        }
+        
+        .support-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-hero h1 {
+                font-size: 3rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">🥃</span>
+                    <span class="logo-text">Drink Express</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="shop.html">Shop</a>
+                    <a href="about.html">About</a>
+                    <a href="delivery.html">Delivery</a>
+                    <a href="contact.html" class="active">Contact</a>
+                </div>
+                <div class="nav-actions">
+                    <button class="icon-btn">🔍</button>
+                    <button class="icon-btn cart-btn">
+                        🛒
+                        <span class="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+        <div class="container" style="text-align: center;">
+            <h1>Get in Touch</h1>
+            <p style="font-size: 1.4rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto;">We're here to help! Reach out with questions, feedback, or support requests.</p>
+        </div>
+    </section>
+
+    <!-- Contact Container -->
+    <div class="container">
+        <div class="contact-container">
+            <!-- Contact Info Sidebar -->
+            <div class="contact-info">
+                <div class="info-card">
+                    <span class="info-icon">📞</span>
+                    <h3>Phone</h3>
+                    <p>Available 7 days a week<br>10:00 AM - 11:00 PM</p>
+                    <p><a href="tel:1-800-DRINK-99">1-800-DRINK-99</a></p>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-icon">✉️</span>
+                    <h3>Email</h3>
+                    <p>We typically respond within 2 hours during business hours</p>
+                    <p><a href="mailto:support@drinkexpress.shop">support@drinkexpress.shop</a></p>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-icon">💬</span>
+                    <h3>Live Chat</h3>
+                    <p>Chat with our support team in real-time</p>
+                    <p><a href="#" onclick="alert('Live chat would open here'); return false;">Start Live Chat</a></p>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-icon">📍</span>
+                    <h3>Location</h3>
+                    <p>Distribution Center:<br>123 Premium Boulevard<br>Suite 500<br>Your City, ST 12345</p>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-wrapper">
+                <h2>Send Us a Message</h2>
+                <form id="contactForm" onsubmit="handleSubmit(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a subject...</option>
+                            <option value="order">Order Inquiry</option>
+                            <option value="delivery">Delivery Question</option>
+                            <option value="product">Product Information</option>
+                            <option value="account">Account Support</option>
+                            <option value="complaint">Complaint</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="orderNumber">Order Number (if applicable)</label>
+                        <input type="text" id="orderNumber" name="orderNumber" placeholder="e.g., DE-123456">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message *</label>
+                        <textarea id="message" name="message" required placeholder="Tell us how we can help..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hours Section -->
+    <section class="hours-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Business Hours</h2>
+                <p>When you can reach us and when we deliver</p>
+            </div>
+            <div class="hours-grid">
+                <div class="hours-card">
+                    <h3>Delivery Hours</h3>
+                    <ul class="hours-list">
+                        <li><strong>Monday - Thursday</strong> <span>10:00 AM - 11:00 PM</span></li>
+                        <li><strong>Friday - Saturday</strong> <span>10:00 AM - 12:00 AM</span></li>
+                        <li><strong>Sunday</strong> <span>11:00 AM - 10:00 PM</span></li>
+                    </ul>
+                </div>
+
+                <div class="hours-card">
+                    <h3>Customer Support</h3>
+                    <ul class="hours-list">
+                        <li><strong>Phone Support</strong> <span>7 Days / Week</span></li>
+                        <li><strong>Live Chat</strong> <span>10 AM - 11 PM</span></li>
+                        <li><strong>Email Support</strong> <span>24/7 Response</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Options -->
+    <section style="padding: var(--spacing-xl) 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Other Ways to Get Help</h2>
+                <p>Quick solutions for common needs</p>
+            </div>
+            <div class="support-options">
+                <div class="support-card">
+                    <span class="support-icon">❓</span>
+                    <h3>FAQ</h3>
+                    <p>Browse our frequently asked questions for quick answers</p>
+                    <a href="delivery.html#faq" class="btn-outline">View FAQ</a>
+                </div>
+
+                <div class="support-card">
+                    <span class="support-icon">📦</span>
+                    <h3>Track Order</h3>
+                    <p>Check the status of your current delivery</p>
+                    <a href="#" class="btn-outline" onclick="alert('Order tracking would open here'); return false;">Track Now</a>
+                </div>
+
+                <div class="support-card">
+                    <span class="support-icon">↩️</span>
+                    <h3>Returns</h3>
+                    <p>Need to return or exchange a product?</p>
+                    <a href="#" class="btn-outline" onclick="alert('Returns page would open here'); return false;">Start Return</a>
+                </div>
+
+                <div class="support-card">
+                    <span class="support-icon">🎁</span>
+                    <h3>Gift Cards</h3>
+                    <p>Purchase or check your gift card balance</p>
+                    <a href="#" class="btn-outline" onclick="alert('Gift cards page would open here'); return false;">Buy Gift Card</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Order?</h2>
+                <p>Browse our premium selection and get delivery in under 60 minutes</p>
+                <a href="shop.html" class="btn-primary btn-large">Start Shopping</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Drink Express</h3>
+                    <p>Premium alcohol delivery service bringing quality beverages to your door with speed and reliability.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📸</a>
+                        <a href="#" class="social-link">🐦</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="shop.html">Shop All</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="delivery.html">Delivery Info</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="shop.html?category=spirits">Spirits</a></li>
+                        <li><a href="shop.html?category=wine">Wine</a></li>
+                        <li><a href="shop.html?category=beer">Beer</a></li>
+                        <li><a href="shop.html?category=mixers">Mixers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Drink Express. All rights reserved.</p>
+                <p class="footer-disclaimer">Please drink responsibly. Must be 21+ to order. We verify age at delivery.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for contacting us! We\'ll get back to you within 2 hours.');
+            document.getElementById('contactForm').reset();
+        }
+    </script>
+</body>
+</html>

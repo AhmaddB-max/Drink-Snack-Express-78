@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drink Express - Premium Alcohol Delivery | Fast & Reliable</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Age Verification Modal -->
+    <div class="age-gate" id="ageGate">
+        <div class="age-gate-content">
+            <div class="age-gate-logo">🥃</div>
+            <h2>Welcome to Drink Express</h2>
+            <p>You must be 21 years or older to enter this site.</p>
+            <div class="age-gate-buttons">
+                <button class="btn-primary" onclick="acceptAge()">I'm 21 or Older</button>
+                <button class="btn-secondary" onclick="rejectAge()">I'm Under 21</button>
+            </div>
+            <p class="age-gate-disclaimer">By entering this site, you agree to our Terms of Service and Privacy Policy. Please drink responsibly.</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">🥃</span>
+                    <span class="logo-text">Drink Express</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html" class="active">Home</a>
+                    <a href="shop.html">Shop</a>
+                    <a href="about.html">About</a>
+                    <a href="delivery.html">Delivery</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="nav-actions">
+                    <button class="icon-btn">🔍</button>
+                    <button class="icon-btn cart-btn">
+                        🛒
+                        <span class="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">Premium Selection • Fast Delivery</div>
+                <h1 class="hero-title">
+                    Your Favorite Drinks,<br>
+                    <span class="highlight">Delivered in Minutes</span>
+                </h1>
+                <p class="hero-subtitle">Premium spirits, craft beers, and fine wines delivered to your door. Fast, reliable, and discreet service.</p>
+                <div class="hero-cta">
+                    <a href="shop.html" class="btn-primary btn-large">Shop Now</a>
+                    <a href="delivery.html" class="btn-outline btn-large">Delivery Info</a>
+                </div>
+                <div class="hero-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">⚡</div>
+                        <div class="feature-text">
+                            <strong>Express Delivery</strong>
+                            <span>Under 60 minutes</span>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🎁</div>
+                        <div class="feature-text">
+                            <strong>Free Delivery</strong>
+                            <span>Orders over $150</span>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">✨</div>
+                        <div class="feature-text">
+                            <strong>Premium Quality</strong>
+                            <span>Curated selection</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Shop by Category</h2>
+                <p>Explore our premium selection of beverages</p>
+            </div>
+            <div class="categories-grid">
+                <a href="shop.html?category=spirits" class="category-card spirits">
+                    <div class="category-overlay"></div>
+                    <div class="category-content">
+                        <h3>Spirits</h3>
+                        <p>Vodka, Whiskey, Rum & More</p>
+                        <span class="category-arrow">→</span>
+                    </div>
+                </a>
+                <a href="shop.html?category=wine" class="category-card wine">
+                    <div class="category-overlay"></div>
+                    <div class="category-content">
+                        <h3>Wine</h3>
+                        <p>Red, White, Rosé & Champagne</p>
+                        <span class="category-arrow">→</span>
+                    </div>
+                </a>
+                <a href="shop.html?category=beer" class="category-card beer">
+                    <div class="category-overlay"></div>
+                    <div class="category-content">
+                        <h3>Beer</h3>
+                        <p>Craft, Import & Premium Lagers</p>
+                        <span class="category-arrow">→</span>
+                    </div>
+                </a>
+                <a href="shop.html?category=mixers" class="category-card mixers">
+                    <div class="category-overlay"></div>
+                    <div class="category-content">
+                        <h3>Mixers & More</h3>
+                        <p>Everything for the Perfect Drink</p>
+                        <span class="category-arrow">→</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Products</h2>
+                <p>Handpicked selections from our premium collection</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-badge">Bestseller</div>
+                    <div class="product-image">
+                        <div class="product-img-placeholder">🥃</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Premium Whiskey</h3>
+                        <p class="product-category">Single Malt Scotch</p>
+                        <div class="product-rating">⭐⭐⭐⭐⭐ <span>(124)</span></div>
+                        <div class="product-footer">
+                            <span class="product-price">$89.99</span>
+                            <button class="btn-add-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-badge sale">Sale</div>
+                    <div class="product-image">
+                        <div class="product-img-placeholder">🍷</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">French Bordeaux</h3>
+                        <p class="product-category">Red Wine, 2019</p>
+                        <div class="product-rating">⭐⭐⭐⭐⭐ <span>(89)</span></div>
+                        <div class="product-footer">
+                            <span class="product-price">$45.99 <del>$59.99</del></span>
+                            <button class="btn-add-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-badge new">New</div>
+                    <div class="product-image">
+                        <div class="product-img-placeholder">🍺</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Craft IPA Selection</h3>
+                        <p class="product-category">Mixed Pack, 12 Bottles</p>
+                        <div class="product-rating">⭐⭐⭐⭐⭐ <span>(56)</span></div>
+                        <div class="product-footer">
+                            <span class="product-price">$34.99</span>
+                            <button class="btn-add-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="product-img-placeholder">🥂</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Premium Champagne</h3>
+                        <p class="product-category">French, Brut</p>
+                        <div class="product-rating">⭐⭐⭐⭐⭐ <span>(93)</span></div>
+                        <div class="product-footer">
+                            <span class="product-price">$125.00</span>
+                            <button class="btn-add-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-cta">
+                <a href="shop.html" class="btn-primary">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>Get your drinks delivered in three simple steps</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <div class="step-icon">📱</div>
+                    <h3>Browse & Select</h3>
+                    <p>Explore our curated selection of premium beverages and add your favorites to cart</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <div class="step-icon">🛒</div>
+                    <h3>Quick Checkout</h3>
+                    <p>Secure payment with multiple options. Age verification for your safety</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <div class="step-icon">🚚</div>
+                    <h3>Fast Delivery</h3>
+                    <p>Express delivery under 60 minutes. Track your order in real-time</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Customers Say</h2>
+                <p>Trusted by thousands of satisfied customers</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Incredibly fast delivery! Ordered for a last-minute party and they delivered in 45 minutes. Great selection and prices too."</p>
+                    <div class="testimonial-author">
+                        <strong>Sarah M.</strong>
+                        <span>Verified Customer</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Best liquor delivery service I've used. Premium products, professional service, and always on time. Highly recommend!"</p>
+                    <div class="testimonial-author">
+                        <strong>Michael R.</strong>
+                        <span>Verified Customer</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Love the curated selection and the free delivery on orders over $150. Makes stocking up for the weekend so easy!"</p>
+                    <div class="testimonial-author">
+                        <strong>Jennifer K.</strong>
+                        <span>Verified Customer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Experience Premium Delivery?</h2>
+                <p>Join thousands of satisfied customers enjoying fast, reliable alcohol delivery</p>
+                <a href="shop.html" class="btn-primary btn-large">Start Shopping</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Drink Express</h3>
+                    <p>Premium alcohol delivery service bringing quality beverages to your door with speed and reliability.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📸</a>
+                        <a href="#" class="social-link">🐦</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="shop.html">Shop All</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="delivery.html">Delivery Info</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="shop.html?category=spirits">Spirits</a></li>
+                        <li><a href="shop.html?category=wine">Wine</a></li>
+                        <li><a href="shop.html?category=beer">Beer</a></li>
+                        <li><a href="shop.html?category=mixers">Mixers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Drink Express. All rights reserved.</p>
+                <p class="footer-disclaimer">Please drink responsibly. Must be 21+ to order. We verify age at delivery.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

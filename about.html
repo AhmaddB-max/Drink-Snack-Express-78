@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Drink Express | Our Story</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .about-hero {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            padding: 6rem 0 4rem;
+            border-bottom: 1px solid var(--accent-gold);
+        }
+        
+        .about-hero h1 {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .about-hero p {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        .story-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .story-content h2 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-gold);
+        }
+        
+        .story-content p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+        
+        .story-image {
+            background: var(--bg-tertiary);
+            height: 500px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            border: 1px solid var(--border-color);
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .value-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 3rem;
+            text-align: center;
+            transition: var(--transition-normal);
+        }
+        
+        .value-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .value-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 10px var(--accent-gold));
+        }
+        
+        .value-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+        }
+        
+        .value-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        .stats-section {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+            border-top: 1px solid var(--accent-gold);
+            border-bottom: 1px solid var(--accent-gold);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+        
+        .stat-item h3 {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-item p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+        
+        .team-section {
+            background: var(--bg-primary);
+        }
+        
+        .responsibility-section {
+            background: var(--bg-secondary);
+        }
+        
+        .responsibility-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .responsibility-content h2 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: var(--accent-gold);
+        }
+        
+        .responsibility-content p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+        
+        .responsibility-badge {
+            display: inline-block;
+            background: rgba(212, 165, 116, 0.1);
+            border: 2px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 2rem;
+            letter-spacing: 1px;
+        }
+        
+        @media (max-width: 1024px) {
+            .story-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-hero h1 {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">🥃</span>
+                    <span class="logo-text">Drink Express</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="shop.html">Shop</a>
+                    <a href="about.html" class="active">About</a>
+                    <a href="delivery.html">Delivery</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="nav-actions">
+                    <button class="icon-btn">🔍</button>
+                    <button class="icon-btn cart-btn">
+                        🛒
+                        <span class="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Hero -->
+    <section class="about-hero">
+        <div class="container" style="text-align: center;">
+            <h1>About Drink Express</h1>
+            <p>We're revolutionizing alcohol delivery with premium selection, lightning-fast service, and an unwavering commitment to quality and responsibility.</p>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section style="padding: var(--spacing-xl) 0;">
+        <div class="container">
+            <div class="story-section">
+                <div class="story-content">
+                    <h2>Our Story</h2>
+                    <p>Drink Express was founded with a simple mission: to bring premium beverages to your door faster and more conveniently than ever before. What started as a vision to modernize alcohol retail has evolved into a trusted service serving thousands of customers.</p>
+                    <p>We understand that life moves fast, and sometimes you need your favorite drinks delivered quickly without compromising on quality or selection. That's why we've built a service that combines cutting-edge logistics with a carefully curated selection of premium products.</p>
+                    <p>Our team of beverage experts hand-selects every product in our catalog, ensuring that whether you're looking for a rare whiskey, craft beer, or fine wine, you're getting the absolute best available.</p>
+                </div>
+                <div class="story-image">
+                    🏪
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values -->
+    <section style="padding: var(--spacing-xl) 0; background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Core Values</h2>
+                <p>The principles that guide everything we do</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">⚡</div>
+                    <h3>Speed</h3>
+                    <p>We pride ourselves on delivering your order in under 60 minutes. Our optimized logistics and dedicated delivery team ensure you get what you need, when you need it.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">✨</div>
+                    <h3>Quality</h3>
+                    <p>Every product in our catalog is carefully selected and verified for authenticity. We partner only with trusted suppliers and maintain strict quality standards.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🛡️</div>
+                    <h3>Responsibility</h3>
+                    <p>We take our role seriously, implementing strict age verification, promoting responsible drinking, and supporting local communities through various initiatives.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">💎</div>
+                    <h3>Curation</h3>
+                    <p>Our beverage experts hand-pick every item, from mainstream favorites to rare finds. We offer variety without overwhelming you with endless mediocre options.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>Service</h3>
+                    <p>Customer satisfaction drives everything we do. Our support team is available 24/7, and we stand behind every delivery with our satisfaction guarantee.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🌟</div>
+                    <h3>Innovation</h3>
+                    <p>We constantly evolve our technology, logistics, and product selection to provide the best possible experience. We're not just a delivery service—we're the future of beverage retail.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>50K+</h3>
+                    <p>Happy Customers</p>
+                </div>
+                <div class="stat-item">
+                    <h3>600+</h3>
+                    <p>Premium Products</p>
+                </div>
+                <div class="stat-item">
+                    <h3>45min</h3>
+                    <p>Average Delivery Time</p>
+                </div>
+                <div class="stat-item">
+                    <h3>99.8%</h3>
+                    <p>Customer Satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Drink Express?</h2>
+                <p>What sets us apart from the competition</p>
+            </div>
+            <div class="story-section">
+                <div class="story-image">
+                    🚚
+                </div>
+                <div class="story-content">
+                    <h2>Express Delivery Network</h2>
+                    <p>Our proprietary delivery network is built for speed. With strategically located distribution centers and a fleet of dedicated delivery vehicles, we can reach you faster than any competitor.</p>
+                    <p>Real-time GPS tracking lets you know exactly where your order is, and our drivers are trained professionals who treat your delivery with care and discretion.</p>
+                </div>
+            </div>
+            <div class="story-section" style="margin-top: 4rem;">
+                <div class="story-content">
+                    <h2>Expert Curation</h2>
+                    <p>Our team includes certified sommeliers, craft beer experts, and spirits connoisseurs who personally taste and evaluate products before they join our catalog.</p>
+                    <p>We don't just stock everything—we stock the best. Every bottle has earned its place on our virtual shelves through rigorous quality standards and expert evaluation.</p>
+                </div>
+                <div class="story-image">
+                    🍷
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Responsible Drinking -->
+    <section class="responsibility-section">
+        <div class="container">
+            <div class="responsibility-content">
+                <h2>Our Commitment to Responsibility</h2>
+                <p>We take our role in the community seriously. Every order is age-verified at checkout and delivery. We train our drivers to recognize signs of intoxication and have the authority to refuse delivery if necessary.</p>
+                <p>We're proud partners of responsible drinking organizations and contribute a portion of our profits to alcohol education programs and addiction support services.</p>
+                <p>We also support local communities by partnering with local craft breweries, distilleries, and wineries, giving them a platform to reach customers while keeping commerce local.</p>
+                <div class="responsibility-badge">21+ VERIFIED DELIVERIES ONLY</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Experience Premium Delivery Today</h2>
+                <p>Join thousands of satisfied customers who trust Drink Express for their beverage needs</p>
+                <a href="shop.html" class="btn-primary btn-large">Start Shopping</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Drink Express</h3>
+                    <p>Premium alcohol delivery service bringing quality beverages to your door with speed and reliability.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📸</a>
+                        <a href="#" class="social-link">🐦</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="shop.html">Shop All</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="delivery.html">Delivery Info</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="shop.html?category=spirits">Spirits</a></li>
+                        <li><a href="shop.html?category=wine">Wine</a></li>
+                        <li><a href="shop.html?category=beer">Beer</a></li>
+                        <li><a href="shop.html?category=mixers">Mixers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Drink Express. All rights reserved.</p>
+                <p class="footer-disclaimer">Please drink responsibly. Must be 21+ to order. We verify age at delivery.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
